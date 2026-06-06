@@ -5,12 +5,12 @@ import { Project } from '@/data/projects'
 import styles from './ProjectModal.module.scss'
 
 const REPO_CONTENTS = [
-  'Пояснительная записка (Word)',
+  'Документ к защите',
   'Презентация к защите',
-  'OVERVIEW.md — разбор проекта',
+  'OVERVIEW.md — инструкции по доработке и описание проекта',
   'README с инструкцией',
   'CREDENTIALS.md — доступы',
-  'Полный исходный код',
+  'Исходный код',
 ]
 
 interface ProjectModalProps {

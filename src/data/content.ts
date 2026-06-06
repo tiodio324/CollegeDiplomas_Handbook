@@ -33,7 +33,7 @@ export interface Deliverable {
 export const DELIVERABLES: Deliverable[] = [
   {
     icon: 'doc',
-    title: 'Пояснительная записка',
+    title: 'Документ к защите',
     text: 'Ключевой Word-документ ВКР.',
   },
   {

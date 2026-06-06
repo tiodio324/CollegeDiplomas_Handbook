@@ -35,7 +35,7 @@ export const Inside = () => {
             <Icon name="bolt" size={18} />
           </span>
           <p>
-            Полный комплект — презентация, <code>OVERVIEW.md</code>, пояснительная записка и{' '}
+            Полный комплект — презентация, word-документ, <code>OVERVIEW.md</code> и{' '}
             <code>CREDENTIALS.md</code> — лежит в GitHub-репозитории, а само приложение развёрнуто
             на хостинге и открывается по ссылке.
           </p>
