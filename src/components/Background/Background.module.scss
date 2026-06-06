@@ -1,0 +1,104 @@
+@use '@/styles/variables' as *;
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: $z-bg;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 78% -10%, rgba(124, 92, 255, 0.14), transparent 60%),
+    radial-gradient(1000px 700px at 10% 10%, rgba(22, 214, 200, 0.1), transparent 55%),
+    var(--bg-base);
+}
+
+.grid {
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+}
+
+.blob {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: var(--aurora-opacity);
+  will-change: transform;
+}
+
+.blob1 {
+  top: -12%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.7), transparent 70%);
+  animation: drift1 22s ease-in-out infinite;
+}
+
+.blob2 {
+  bottom: -18%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(91, 140, 255, 0.55), transparent 70%);
+  animation: drift2 27s ease-in-out infinite;
+}
+
+.blob3 {
+  top: 38%;
+  left: 42%;
+  width: 32vw;
+  height: 32vw;
+  background: radial-gradient(circle, rgba(22, 214, 200, 0.4), transparent 70%);
+  animation: drift3 25s ease-in-out infinite;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.18));
+  :root[data-theme='light'] & {
+    background: radial-gradient(120% 80% at 50% 0%, transparent 60%, rgba(20, 25, 60, 0.05));
+  }
+}
+
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-6%, 6%) scale(1.12);
+  }
+}
+
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(8%, -5%) scale(1.1);
+  }
+}
+
+@keyframes drift3 {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-42%, -58%) scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}

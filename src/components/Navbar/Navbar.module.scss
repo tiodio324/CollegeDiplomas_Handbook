@@ -1,0 +1,221 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+  transition: background $t-base, border-color $t-base, box-shadow $t-base;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: var(--bg-glass-strong);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), var(--accent-3));
+}
+
+.inner {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-md;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-sm;
+  color: var(--text-strong);
+  @include focus-ring;
+}
+
+.brandIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+  box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+
+  strong {
+    font-family: $font-display;
+    font-size: $fs-md;
+    font-weight: $fw-bold;
+  }
+  small {
+    font-size: $fs-xs;
+    color: var(--text-muted);
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: $sp-xs;
+
+  a {
+    padding: $sp-sm $sp-md;
+    border-radius: $radius-full;
+    color: var(--text-secondary);
+    font-weight: $fw-medium;
+    font-size: $fs-sm;
+    transition: color $t-fast, background $t-fast;
+
+    &:hover {
+      color: var(--text-strong);
+      background: var(--accent-soft);
+    }
+  }
+}
+
+.menuGithub {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $sp-sm;
+}
+
+.iconBtn {
+  @include flex-center;
+  width: 42px;
+  height: 42px;
+  border-radius: $radius-full;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  transition: color $t-fast, border-color $t-fast, transform $t-fast, background $t-fast;
+  @include focus-ring;
+
+  &:hover {
+    color: var(--text-strong);
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+  }
+}
+
+.ghBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-sm;
+  padding: 0 $sp-lg;
+  height: 42px;
+  border-radius: $radius-full;
+  font-weight: $fw-semibold;
+  font-size: $fs-sm;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: var(--shadow-glow);
+  transition: transform $t-fast, filter $t-fast;
+  @include focus-ring;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+  }
+}
+
+.burger {
+  display: none;
+}
+
+.scrim {
+  display: none;
+}
+
+@include tablet-down {
+  .ghBtn span {
+    display: none;
+  }
+  .ghBtn {
+    padding: 0;
+    width: 42px;
+    justify-content: center;
+  }
+}
+
+@include mobile {
+  .ghBtn {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+  .menuGithub {
+    display: inline-flex !important;
+    align-items: center;
+    gap: $sp-sm;
+    justify-content: center;
+    margin-top: $sp-sm;
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 68px 0 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  .links {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: $sp-md;
+    left: $sp-md;
+    flex-direction: column;
+    align-items: stretch;
+    gap: $sp-xs;
+    padding: $sp-md;
+    border-radius: $radius-lg;
+    background: var(--bg-glass-strong);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top;
+    pointer-events: none;
+    transition: opacity $t-base, transform $t-base;
+
+    a {
+      padding: $sp-md;
+      font-size: $fs-base;
+      text-align: center;
+    }
+  }
+
+  .open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}

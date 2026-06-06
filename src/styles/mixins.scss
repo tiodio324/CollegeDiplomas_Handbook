@@ -1,0 +1,142 @@
+// ============================================
+// Global Mixins
+// ============================================
+
+@use './variables' as *;
+
+// Responsive helpers (mobile-first max-width breakpoints)
+@mixin to($bp) {
+  @media (max-width: #{$bp - 1}) {
+    @content;
+  }
+}
+
+@mixin from($bp) {
+  @media (min-width: #{$bp}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$bp-sm - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @media (max-width: #{$bp-lg - 1}) {
+    @content;
+  }
+}
+
+// Layout
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container;
+  margin: 0 auto;
+  padding-inline: $sp-lg;
+
+  @include mobile {
+    padding-inline: $sp-md;
+  }
+}
+
+// Glass / surfaces
+@mixin glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+@mixin card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+}
+
+// Accent gradient text
+@mixin gradient-text {
+  background: linear-gradient(100deg, var(--accent), var(--accent-2) 45%, var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@mixin gradient-border($radius: $radius-lg) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $radius;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+// Text utilities
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin focus-ring {
+  outline: none;
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+}
+
+@mixin scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: $radius-full;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    background-clip: padding-box;
+  }
+}
+
+@mixin section-padding {
+  padding-block: $sp-4xl;
+
+  @include mobile {
+    padding-block: $sp-3xl;
+  }
+}

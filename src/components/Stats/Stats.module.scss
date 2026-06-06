@@ -1,0 +1,67 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.stats {
+  scroll-margin-top: 80px;
+  padding-block: $sp-xl;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: $sp-md;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $sp-sm;
+  }
+}
+
+.card {
+  @include glass;
+  border-radius: $radius-lg;
+  padding: $sp-lg;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $sp-xs;
+  transition: transform $t-base, border-color $t-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-glow);
+  }
+}
+
+.icon {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  color: var(--accent);
+  background: var(--accent-soft);
+  margin-bottom: $sp-xs;
+}
+
+.value {
+  font-family: $font-display;
+  font-size: $fs-3xl;
+  font-weight: $fw-bold;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  @include gradient-text;
+
+  @include mobile {
+    font-size: $fs-2xl;
+  }
+}
+
+.label {
+  font-size: $fs-sm;
+  color: var(--text-muted);
+  line-height: 1.35;
+}

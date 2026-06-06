@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="18 выпускных квалификационных работ (ВКР) для группы веб-разработчиков Охтинского колледжа: 18 живых веб-приложений на React, TypeScript, MobX и Firebase. Единый стек — разные темы." />
+    <meta name="author" content="tiodio324" />
+    <meta name="theme-color" content="#6d5efc" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="18 ВКР Охтинского колледжа — единый справочник" />
+    <meta property="og:description" content="18 дипломных веб-приложений на едином стеке (React 19, TypeScript, MobX, Firebase). Живые сайты + исходники на GitHub." />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>18 ВКР · Справочник дипломных работ Охтинского колледжа</title>
+
+    <script>
+      // Apply saved theme before paint to avoid a flash of the wrong theme.
+      (function () {
+        try {
+          var saved = localStorage.getItem('handbook-theme');
+          var theme = saved || 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

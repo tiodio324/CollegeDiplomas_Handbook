@@ -1,0 +1,130 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  @include section-padding;
+  scroll-margin-top: 70px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: $sp-xl;
+  align-items: start;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $sp-md;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.point {
+  display: flex;
+  gap: $sp-md;
+  height: 100%;
+  padding: $sp-lg;
+  border-radius: $radius-lg;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: transform $t-base, border-color $t-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-glow);
+  }
+
+  h3 {
+    font-size: $fs-base;
+    font-weight: $fw-semibold;
+    color: var(--text-strong);
+    margin-bottom: 6px;
+  }
+
+  p {
+    font-size: $fs-sm;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+}
+
+.icon {
+  @include flex-center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: $radius-md;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border-glow);
+}
+
+.codeWrap {
+  position: sticky;
+  top: 90px;
+}
+
+.code {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-deep);
+  box-shadow: var(--shadow-md);
+}
+
+.codeBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: $sp-sm $sp-md;
+  background: var(--bg-surface-2);
+  border-bottom: 1px solid var(--border);
+
+  em {
+    margin-left: $sp-sm;
+    font-style: normal;
+    font-family: $font-mono;
+    font-size: $fs-xs;
+    color: var(--text-muted);
+  }
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--border-strong);
+
+  &:nth-child(1) {
+    background: #ff5f57;
+  }
+  &:nth-child(2) {
+    background: #febc2e;
+  }
+  &:nth-child(3) {
+    background: #28c840;
+  }
+}
+
+.code pre {
+  margin: 0;
+  padding: $sp-lg;
+  overflow-x: auto;
+  @include scrollbar;
+
+  code {
+    font-family: $font-mono;
+    font-size: $fs-sm;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    white-space: pre;
+  }
+}

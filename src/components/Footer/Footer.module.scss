@@ -1,0 +1,127 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  position: relative;
+  padding-block: $sp-3xl $sp-xl;
+  margin-top: $sp-2xl;
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(800px 400px at 50% 0%, var(--accent-soft), transparent 65%),
+    var(--bg-deep);
+}
+
+.cta {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto $sp-2xl;
+
+  h2 {
+    font-size: $fs-3xl;
+    margin-bottom: $sp-md;
+
+    @include mobile {
+      font-size: $fs-2xl;
+    }
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: $sp-xl;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-sm;
+  height: 54px;
+  padding: 0 $sp-2xl;
+  border-radius: $radius-full;
+  font-weight: $fw-semibold;
+  font-size: $fs-md;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: var(--shadow-glow), var(--shadow-md);
+  transition: transform $t-fast, filter $t-fast;
+  @include focus-ring;
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: $sp-xl;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-lg;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $sp-sm;
+}
+
+.brandIcon {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-3));
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+
+  strong {
+    font-family: $font-display;
+    color: var(--text-strong);
+  }
+  small {
+    font-size: $fs-xs;
+    color: var(--text-muted);
+  }
+}
+
+.meta {
+  font-size: $fs-sm;
+  color: var(--text-muted);
+
+  @include mobile {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.top {
+  @include flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-full;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  transition: transform $t-fast, color $t-fast, border-color $t-fast;
+  @include focus-ring;
+
+  &:hover {
+    transform: translateY(-3px);
+    color: var(--text-strong);
+    border-color: var(--accent);
+  }
+}

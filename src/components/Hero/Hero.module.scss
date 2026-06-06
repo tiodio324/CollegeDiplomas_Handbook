@@ -1,0 +1,292 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.hero {
+  position: relative;
+  scroll-margin-top: 80px;
+  padding-block: $sp-4xl $sp-3xl;
+  min-height: min(92vh, 900px);
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    padding-block: $sp-2xl $sp-2xl;
+    min-height: auto;
+  }
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: $sp-3xl;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: 1fr;
+    gap: $sp-2xl;
+  }
+}
+
+.copy {
+  max-width: 640px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-sm;
+  padding: $sp-xs $sp-md;
+  border-radius: $radius-full;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  margin-bottom: $sp-lg;
+
+  svg {
+    color: var(--accent);
+  }
+}
+
+.title {
+  font-size: $fs-5xl;
+  font-weight: $fw-bold;
+  letter-spacing: -0.03em;
+  margin-bottom: $sp-lg;
+}
+
+.count {
+  position: relative;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, var(--accent), var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.lead {
+  font-size: $fs-md;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: $sp-xl;
+  max-width: 600px;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-md;
+  margin-bottom: $sp-2xl;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-sm;
+  height: 52px;
+  padding: 0 $sp-xl;
+  border-radius: $radius-full;
+  font-weight: $fw-semibold;
+  font-size: $fs-base;
+  transition: transform $t-fast, filter $t-fast, background $t-fast, border-color $t-fast;
+  @include focus-ring;
+}
+
+.primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: var(--shadow-glow), var(--shadow-md);
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+}
+
+.secondary {
+  color: var(--text-strong);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-xl;
+
+  li {
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      font-family: $font-display;
+      font-size: $fs-2xl;
+      font-weight: $fw-bold;
+      color: var(--text-strong);
+      line-height: 1;
+    }
+    span {
+      font-size: $fs-sm;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+  }
+}
+
+// ---------- Showcase mosaic ----------
+.showcase {
+  position: relative;
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-md;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $sp-sm;
+  }
+}
+
+.tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: $radius-lg;
+  background: linear-gradient(150deg, var(--c), var(--a));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  animation: tileIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: transform $t-base, box-shadow $t-base;
+  @include focus-ring;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 55%);
+    mix-blend-mode: overlay;
+  }
+
+  &:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 16px 30px -8px color-mix(in srgb, var(--c) 60%, transparent);
+    z-index: 2;
+  }
+}
+
+.tileEmoji {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: transform $t-base, opacity $t-base;
+}
+
+.tileNum {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity $t-base;
+}
+
+.tile:hover .tileEmoji {
+  transform: scale(0.6);
+  opacity: 0;
+}
+.tile:hover .tileNum {
+  opacity: 1;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: $sp-sm;
+  justify-content: center;
+  margin-top: $sp-lg;
+  font-size: $fs-sm;
+  color: var(--text-muted);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-3);
+  box-shadow: 0 0 10px var(--accent-3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.scrollHint {
+  position: absolute;
+  left: 50%;
+  bottom: $sp-lg;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  animation: bob 2s ease-in-out infinite;
+  @include focus-ring;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+@keyframes tileIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .scrollHint,
+  .dot {
+    animation: none;
+  }
+}

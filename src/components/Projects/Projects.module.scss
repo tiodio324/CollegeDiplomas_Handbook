@@ -1,0 +1,141 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  @include section-padding;
+  scroll-margin-top: 70px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $sp-lg;
+  margin-bottom: $sp-lg;
+  flex-wrap: wrap;
+}
+
+.search {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-sm;
+  flex: 1;
+  min-width: 260px;
+  height: 50px;
+  padding: 0 $sp-md;
+  border-radius: $radius-full;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  transition: border-color $t-fast, box-shadow $t-fast;
+
+  &:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+    color: var(--accent);
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: $fs-base;
+
+    &::placeholder {
+      color: var(--text-faint);
+    }
+  }
+
+  button {
+    @include flex-center;
+    width: 26px;
+    height: 26px;
+    border-radius: $radius-full;
+    color: var(--text-muted);
+    background: var(--bg-surface-2);
+
+    &:hover {
+      color: var(--text-strong);
+    }
+  }
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-xs;
+
+  @include mobile {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: $sp-xs;
+    @include scrollbar;
+  }
+}
+
+.chip {
+  padding: $sp-sm $sp-md;
+  border-radius: $radius-full;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: all $t-fast;
+  @include focus-ring;
+
+  &:hover {
+    color: var(--text-strong);
+    border-color: var(--border-strong);
+  }
+}
+
+.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.count {
+  font-size: $fs-sm;
+  color: var(--text-muted);
+  margin-bottom: $sp-lg;
+
+  strong {
+    color: var(--text-strong);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $sp-lg;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $sp-md;
+  }
+}
+
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  gap: $sp-md;
+  padding: $sp-4xl $sp-md;
+  color: var(--text-muted);
+  text-align: center;
+
+  svg {
+    color: var(--text-faint);
+  }
+}
