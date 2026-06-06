@@ -11,8 +11,8 @@
 
 .scrolled {
   background: var(--bg-glass-strong);
-  backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
   border-bottom-color: var(--border);
   box-shadow: var(--shadow-sm);
 }
@@ -196,8 +196,8 @@
     padding: $sp-md;
     border-radius: $radius-lg;
     background: var(--bg-glass-strong);
-    backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
+    backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-lg);
     opacity: 0;

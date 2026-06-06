@@ -63,8 +63,8 @@
   padding: $sp-xs $sp-sm;
   border-radius: $radius-full;
   background: rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
